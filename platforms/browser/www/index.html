@@ -28,7 +28,6 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -38,12 +37,34 @@
     <body>
         <div class="app">
             <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+           <button onclick="pay()"> Click Me</button>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="rave.js"></script>
+        <script>
+            
+            function pay(){
+                initRavePay({
+                    'PBFPubKey': 'FLWPUBK_TEST-537a26ca7871c3106ec1fc5e79b1a41d-X',
+                    'amount': 100,
+                    'currency': 'NGN',
+                    'country': 'NG',
+                    'customer_email': 'kwakujosh@gmail.com',
+                    'customer_firstname': 'Jon',
+                    'customer_lastname': 'Snow',
+                    'pay_button_text': '',
+                    'custom_title': '',
+                    'custom_description': '',
+                    'redirect_url': 'success.html',
+                    'custom_logo': '',
+                    'txref': 'CD-102297-RV098299'
+                });
+            }
+
+            window.addEventListener('popstate', (event) => {
+                console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+            })
+        </script>
     </body>
 </html>

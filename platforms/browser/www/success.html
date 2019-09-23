@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    if(window.location.href.includes("success.html")){
+                var response = decodeURIComponent(window.location.href).split("resp=");
+                var json = JSON.parse(response[1]);
+                console.log(json);
+                if(json.respcode === "00"){
+                    //If resppcode is 00, Here you can redirect your user to a page thats shows transaction is successful
+                    alert(JSON.stringify(json.tx))
+                }
+
+            //Add your success logic here
+            }    
+    </script>
+</body>
+</html>

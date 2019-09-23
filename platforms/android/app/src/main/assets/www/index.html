@@ -61,6 +61,10 @@
                     'txref': 'CD-102297-RV098299'
                 });
             }
+
+            window.addEventListener('popstate', (event) => {
+                console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+            })
         </script>
     </body>
 </html>
